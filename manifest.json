@@ -28,6 +28,6 @@
         "run_at" : "document_end"
       }],
     "permissions": ["storage", "tabs", "activeTab", "contextMenus"],
-    "web_accessible_resources": ["modal.html", "js/bootstrap.min.js","css/bootstrap.min.css", "css/custom.css", "css/modal.css"],
+    "web_accessible_resources": ["modal.html", "img/kiss48.png", "css/modal.csss"],
     "manifest_version": 2
 }

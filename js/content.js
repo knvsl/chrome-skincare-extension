@@ -15,6 +15,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         chrome.storage.sync.get('sephoraLink', function(data) {
             iframe.src = data.sephoraLink;
           });
+
+        let img = document.getElementById("beautyguruLogo");
+        img.src = chrome.extension.getURL("img/kiss48.png");
         
         // Add listener to close modal
         let close = document.getElementById('beautyguruClose');
