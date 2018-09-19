@@ -1,33 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let textInput = document.getElementById("productText");
-    let openButton = document.getElementById("openAll");
-    
-    // Site links
     let urlsAreSet = false;
 
-    //var option = {link: document.getElementById("mua"), toggle: null};
+    let textInput = document.getElementById("productText");
+    let openButton = document.getElementById("openAll");
 
-    let links = [
-        document.getElementById("mua"), 
-        document.getElementById("cosdna"), 
-        document.getElementById("sephora"),
-        document.getElementById("beautypedia"),
-        document.getElementById("paulaschoice")
-    ];
-
-    // Toggle switches
-    let toggles = [
-        document.getElementById("sephoraCheck"), 
-        document.getElementById("beautypediaCheck"),
-        document.getElementById("paulaschoiceCheck")
-    ];
+    let options = [
+        {link: document.getElementById("mua"), toggle: null},
+        {link: document.getElementById("cosdna"), toggle: null},
+        {link: document.getElementById("sephora"), toggle: document.getElementById("sephoraCheck")},
+        {link: document.getElementById("beautypedia"), toggle: document.getElementById("beautypediaCheck")},
+        {link: document.getElementById("paulaschoice"), toggle: document.getElementById("paulaschoiceCheck")}
+    ]
 
     // Get selection from context menu
     chrome.storage.sync.get({"selection" : ""}, function(data) {
         if (data.selection != "") {
             textInput.value = data.selection;
-            setURLs(links, data.selection);
+            setURLs(options, data.selection);
             urlsAreSet = true;
         }
     });
@@ -40,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             chrome.storage.sync.set({selection: text});
 
             // Set search URLs
-            setURLs(links, text);
+            setURLs(options, text);
             urlsAreSet = true;
 
             // Notify content script to inject modal
@@ -49,45 +39,42 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-
+    
     // Open all tabs event listener
     openButton.addEventListener("click", function(){
         if (urlsAreSet) {
-            for (let i = 0; i < links.length; i++) {
-                let link = links[i];
+            for (let i = 0; i < options.length; i++) {
+                let link = options[i].link;
                 chrome.tabs.create({"url": link.href});
             }
         }
     });
 
-    // Open Modal listener
-    /*
-    sephora.addEventListener("click", function() {
-        if (sephora.href) {
-            // Notify content script to open modal
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {message: "openModal", url: sephora.href});
-            });
-        }
-    });
-    */
-
     // Click event listeners
-    // TODO: for sephora, pc, beautypedia if toggle open modal else tab
-    for (let i = 0; i < links.length; i++) {
-        let link = links[i];
+    for (let i = 0; i < options.length; i++) {
+        let link = options[i].link;
+        let toggle = options[i].toggle;
         link.addEventListener("click", function() {
             if (urlsAreSet) {
-                chrome.tabs.create({"url": link.href});
+                // Open Modal
+                if (toggle && toggle.checked) {
+                    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                        chrome.tabs.sendMessage(tabs[0].id, {message: "openModal", url: link.href});
+                    });
+                } 
+                // Open new tab
+                else {
+                    chrome.tabs.create({"url": link.href});
+                }
             }
         });
     }
 
 });
 
-function setURLs (links, text) {
-    for (let i = 0; i < links.length; i++) {
-        let link = links[i];
+function setURLs (options, text) {
+    for (let i = 0; i < options.length; i++) {
+        let link = options[i].link;
         switch (link.id) {
             case "sephora":
                 link.href = "https://www.sephora.com/search?keyword=" + encodeURIComponent(text);
