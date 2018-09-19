@@ -1,30 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     let textInput = document.getElementById("productText");
-
-    // TODO for testing, cleanup later
-    let sephora = document.getElementById("sephora");
-    let mua = document.getElementById("mua");
-    let cosdna = document.getElementById("cosdna");
-    let beautypedia = document.getElementById("beautypedia");
-    let paulaschoice = document.getElementById("paulaschoice");
+    let openButton = document.getElementById("openAll");
     
-    var links = [];
-    links.push(sephora);
-    links.push(mua);
-    links.push(cosdna);
-    links.push(beautypedia);
-    links.push(paulaschoice);
+    // Site links
+    let urlsAreSet = false;
+
+    //var option = {link: document.getElementById("mua"), toggle: null};
+
+    let links = [
+        document.getElementById("mua"), 
+        document.getElementById("cosdna"), 
+        document.getElementById("sephora"),
+        document.getElementById("beautypedia"),
+        document.getElementById("paulaschoice")
+    ];
+
+    // Toggle switches
+    let toggles = [
+        document.getElementById("sephoraCheck"), 
+        document.getElementById("beautypediaCheck"),
+        document.getElementById("paulaschoiceCheck")
+    ];
 
     // Get selection from context menu
     chrome.storage.sync.get({"selection" : ""}, function(data) {
         if (data.selection != "") {
             textInput.value = data.selection;
             setURLs(links, data.selection);
+            urlsAreSet = true;
         }
     });
 
-    // Add enter/submit event listener
+    // Enter/submit text event listener
     textInput.addEventListener("keydown", function(e) {
         if (e.key === 'Enter') {  
             // Save to storage
@@ -33,11 +41,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Set search URLs
             setURLs(links, text);
+            urlsAreSet = true;
 
             // Notify content script to inject modal
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, {message: "injectModal"});
             });
+        }
+    });
+
+    // Open all tabs event listener
+    openButton.addEventListener("click", function(){
+        if (urlsAreSet) {
+            for (let i = 0; i < links.length; i++) {
+                let link = links[i];
+                chrome.tabs.create({"url": link.href});
+            }
         }
     });
 
@@ -54,43 +73,21 @@ document.addEventListener('DOMContentLoaded', function() {
     */
 
     // Click event listeners
-    // TODO: clean up 
     // TODO: for sephora, pc, beautypedia if toggle open modal else tab
-    sephora.addEventListener("click", function() {
-        if (sephora.href) {
-            chrome.tabs.create({"url": sephora.href});
-        }
-    });
-
-    mua.addEventListener("click", function() {
-        if (mua.href) {
-            chrome.tabs.create({"url": mua.href});
-        }
-    });
-
-    beautypedia.addEventListener("click", function() {
-        if (beautypedia.href) {
-            chrome.tabs.create({"url": beautypedia.href});
-        }
-    });
-
-    paulaschoice.addEventListener("click", function() {
-        if (paulaschoice.href) {
-            chrome.tabs.create({"url": paulaschoice.href});
-        }
-    });
-
-    cosdna.addEventListener("click", function() {
-        if (cosdna.href) {
-            chrome.tabs.create({"url": cosdna.href});
-        }
-    });
+    for (let i = 0; i < links.length; i++) {
+        let link = links[i];
+        link.addEventListener("click", function() {
+            if (urlsAreSet) {
+                chrome.tabs.create({"url": link.href});
+            }
+        });
+    }
 
 });
 
 function setURLs (links, text) {
-    for (var i = 0; i < links.length; i++) {
-        var link = links[i];
+    for (let i = 0; i < links.length; i++) {
+        let link = links[i];
         switch (link.id) {
             case "sephora":
                 link.href = "https://www.sephora.com/search?keyword=" + encodeURIComponent(text);
