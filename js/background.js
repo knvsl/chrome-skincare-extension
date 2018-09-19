@@ -13,6 +13,15 @@ chrome.contextMenus.onClicked.addListener(function(info) {
     }
 });
 
+
+// Erase past searches everytime tab changes
+// TODO save searches tab specific
+/*
 chrome.tabs.onActivated.addListener(function() {
+    chrome.storage.sync.clear();
+}); 
+*/
+
+chrome.tabs.onUpdated.addListener(function() {
     chrome.storage.sync.clear();
 }); 

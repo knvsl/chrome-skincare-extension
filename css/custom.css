@@ -28,29 +28,121 @@ a {
     color: #5E5E5E;
 }
 
-a:hover {
-    color: #383838;
-    text-decoration: none;
+a:hover, a:active, a:focus {
+    color: #5E5E5E;
+    text-decoration: none !important;
     font-weight:bold;
 }
 
 tr td{
     padding: 5px !important;
+    color: #5E5E5E;
   }
 
 .table-borderless {
     margin-top: 10px;
-    border-collapse: collapse;
+    border-collapse: collapse !important;
 }
 
 .table-borderless td {
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
 }
 
 .favicon {
+    margin-left: 24px;
     width: 16px;
     height: 16px;
 }
+
+.btn-container {
+    text-align: center;
+}
+
+.btn.btn-outline-grey {
+    color: #5E5E5E;
+    background-color: #FFFFFF;
+    border-color: #5E5E5E;
+}
+
+.btn.btn-outline-grey:hover,
+.btn.btn-outline-grey:focus,
+.btn.btn-outline-grey:active {
+  color: #FFFFFF;
+  background-color: #5E5E5E;
+  border-color: #5E5E5E;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.btn-tiny {
+    height: 16px;
+    font-size: 14px;
+}
+
+/* Toggle Switch from https://www.w3schools.com/howto/howto_css_switch.asp*/
+label {
+    vertical-align: middle !important;
+}
+
+.switch input { 
+    vertical-align: middle !important;
+    display: none; }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 18px;
+  }
+
+  /* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #5E5E5E;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #5E5E5E;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 12px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
 
 
