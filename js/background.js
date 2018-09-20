@@ -1,3 +1,4 @@
+// Create context menu
 chrome.runtime.onInstalled.addListener(function() {
     chrome.contextMenus.create({
         "title": "Copy to BeautyGuru",
@@ -6,6 +7,7 @@ chrome.runtime.onInstalled.addListener(function() {
     });
 });
 
+// Save selection to storage
 chrome.contextMenus.onClicked.addListener(function(info) {
     if(info.menuItemId === "beautyguru") {
         let text = info.selectionText;
@@ -13,8 +15,7 @@ chrome.contextMenus.onClicked.addListener(function(info) {
     }
 });
 
-// Erase past searches everytime tab changes
+// Clear on change tabs
 chrome.tabs.onActivated.addListener(function() {
     chrome.storage.sync.clear();
 }); 
-

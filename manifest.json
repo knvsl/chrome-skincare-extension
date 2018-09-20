@@ -24,8 +24,7 @@
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "css": ["css/modal.css"],
-        "js": ["js/jquery-3.3.1.min.js", "js/content.js"],
-        "run_at" : "document_end"
+        "js": ["js/jquery-3.3.1.min.js", "js/content.js"]
       }],
     "permissions": ["storage", "tabs", "activeTab", "contextMenus"],
     "web_accessible_resources": ["modal.html", "img/kiss48.png", "css/modal.csss"],

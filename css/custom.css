@@ -34,14 +34,14 @@ a:hover, a:active, a:focus {
     font-weight:bold;
 }
 
-tr td{
-    padding: 5px !important;
-    color: #5E5E5E;
-  }
-
 .table-borderless {
     margin-top: 10px;
     border-collapse: collapse !important;
+}
+
+.table-borderless tr, .table-borderless td{
+    padding: 5px !important;
+    color: #5E5E5E;
 }
 
 .table-borderless td {
@@ -65,22 +65,21 @@ tr td{
     border-color: #5E5E5E;
 }
 
-.btn.btn-outline-grey:hover,
+.btn.btn-outline-grey:hover {
+    color: #FFFFFF;
+    background-color: #5E5E5E;
+}
 .btn.btn-outline-grey:focus,
 .btn.btn-outline-grey:active {
-  color: #FFFFFF;
-  background-color: #5E5E5E;
-  border-color: #5E5E5E;
-  outline: none !important;
-  box-shadow: none;
+    outline: none !important;
+    box-shadow: none;
 }
 
-.btn-tiny {
-    height: 16px;
-    font-size: 14px;
+.btn.btn-outline-grey:active {
+    background-color: #474747;
 }
 
-/* Toggle Switch from https://www.w3schools.com/howto/howto_css_switch.asp*/
+/* Toggle Switch modified from https://www.w3schools.com/howto/howto_css_switch.asp*/
 label {
     vertical-align: middle !important;
 }
@@ -96,7 +95,6 @@ label {
     height: 18px;
   }
 
-  /* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -109,7 +107,7 @@ label {
     transition: .4s;
   }
   
-  .slider:before {
+.slider:before {
     position: absolute;
     content: "";
     height: 16px;
@@ -119,30 +117,121 @@ label {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
+}
   
-  input:checked + .slider {
+input:checked + .slider {
     background-color: #5E5E5E;
-  }
+}
   
-  input:focus + .slider {
+input:focus + .slider {
     box-shadow: 0 0 1px #5E5E5E;
-  }
+}
   
-  input:checked + .slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(14px);
-    -ms-transform: translateX(14px);
     transform: translateX(14px);
-  }
+}
   
-  /* Rounded sliders */
-  .slider.round {
+.slider.round {
     border-radius: 12px;
-  }
+}
   
-  .slider.round:before {
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+/* Help Guide Tool Tips */
+.help-guide {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.75); 
+    border-radius: 5px;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    overflow: visible;
+    text-align: center;
+}
+
+.help-guide-text {
+    margin-top: 3px;
+    margin-left: 45%;
+    width: 175px;
+}
+
+.help-guide-text:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 15px;
+    right: 100%;
+    border: 10px solid transparent;
+    border-right-color: rgba(0,0,0,0.75); 
+}
+
+.help-guide-link {
+    margin-top: 30%;
+    margin-left: 20px;
+    width: 110px;
+}
+
+.help-guide-link:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50px;
+    bottom: 100%;
+    border: 10px solid transparent;
+    border-bottom-color: rgba(0,0,0,0.75); 
+}
+
+.help-guide-toggle {
+    margin-top: 40%;
+    margin-left: 175px;
+    width: 90px;
+}
+
+.help-guide-toggle:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border: 10px solid transparent;
+    border-left-color: rgba(0,0,0,0.75); 
+}
+
+.help-guide-button {
+    margin-top: 70%;
+    margin-left: 5%;
+    width: 85px;
+}
+
+.help-guide-button:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 55%;
+    left: 100%;
+    border: 10px solid transparent;
+    border-left-color: rgba(0,0,0,0.75); 
+}
+
+.pink {
+    display: inline;
+    color: #FF1372;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
 
 
 

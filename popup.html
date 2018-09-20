@@ -7,6 +7,22 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
+        <!-- Help Guide -->
+        <div class="help-guide help-guide-text">
+            Enter the item name + hit ENTER to submit<br><br>
+            Or select text and right click to "Copy to BeautyGuru"
+        </div>
+        <div class="help-guide help-guide-link">
+            <div class="pink">PINK</div> links are ready to open<br><br>
+            Click to open in a new tab
+        </div>
+        <div class="help-guide help-guide-toggle">
+            Toggle to open as a modal instead of tab
+        </div>
+        <div class="help-guide help-guide-button">
+            Click to open all links as new tabs
+        </div>
+        <!-- Popup -->
         <div class="container">
             <input id="productText" type="text" placeholder="Enter Product/Ingredient Name">
             <table class="table table-borderless">
@@ -59,10 +75,12 @@
                             </label>
                         </td>
                     </tr>
+                    <tr><td class="footer" width="300px"></td></tr>
                 </tbody>
             </table>
             <div class="btn-container">
                 <button id="openAll" type="button" class="btn btn-sm btn-outline-grey">Open All</button>
+                <button id="help" type="button" class="btn btn-sm btn-outline-grey">?</button>
             </div>
         </div>
     </body>

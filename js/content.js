@@ -7,7 +7,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
     // Open Modal
     else if (request.message === "openModal") {
-
         // Set src of iframe
         let iframe = document.getElementById("beautyguruIframe");
         iframe.src = request.url;
@@ -24,10 +23,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         let close = document.getElementById('beautyguruClose');
         close.addEventListener("click", function() {
             modal.style.display = "none";
+            iframe.removeAttribute("src");
         });
-        
     }
-    
 });
 
 
