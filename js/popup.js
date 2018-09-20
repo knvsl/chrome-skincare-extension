@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {link: document.getElementById("cosdna"), toggle: null},
         {link: document.getElementById("sephora"), toggle: document.getElementById("sephoraCheck")},
         {link: document.getElementById("beautypedia"), toggle: document.getElementById("beautypediaCheck")},
-        {link: document.getElementById("paulaschoice"), toggle: document.getElementById("paulaschoiceCheck")}
+        {link: document.getElementById("pc"), toggle: document.getElementById("paulaschoiceCheck")}
     ]
 
     for (let i = 0; i < options.length; i++) {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Open modal
                 if (toggle && toggle.checked) {
                     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                        chrome.tabs.sendMessage(tabs[0].id, {message: "openModal", url: link.href});
+                        chrome.tabs.sendMessage(tabs[0].id, {message: "openModal", url: link.href, title: link.innerHTML});
                     });
                 } 
                 // Open new tab
@@ -120,7 +120,7 @@ function setURLs (options, text) {
             case "beautypedia":
                 link.href = "https://www.beautypedia.com/?s=" + encodeURIComponent(text);
                 break;
-            case "paulaschoice":
+            case "pc":
                 link.href = "https://www.paulaschoice.com/ingredient-dictionary?crefn1=name-first-letter&crefv1=" + encodeURIComponent(text.charAt(0).toUpperCase());
                 break;
             default:

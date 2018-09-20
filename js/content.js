@@ -14,6 +14,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         // Set logo
         let img = document.getElementById("beautyguruLogo");
         img.src = chrome.extension.getURL("img/kiss48.png");
+
+        // Set title
+        let title = document.getElementById("beautyguruTitle");
+        title.textContent = request.title;
+        title.href = request.url;
         
         // Show modal
         let modal = document.getElementById('beautyguruModal');

@@ -36,7 +36,7 @@
 .beautyguru-modal-content {
     background-color: #fefefe;
     margin: 20px auto; 
-    padding: 0px 0px 40px 0px;
+    padding: 0 0 10px 0;
     border: 0px;
     width: 65%;
     border-radius: 5px;
@@ -57,14 +57,23 @@
     display: inline-block;
     color: #383838;
     font-size: 24px; 
+    text-decoration: none;
+}
+
+.beautyguru-title:hover, 
+.beautyguru-title:active,
+.beautyguru-title:focus,
+.beautyguru-close:hover,
+.beautyguru-close:active,
+.beautyguru-close:focus {
+    color: #FF1372;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .beautyguru-close:hover,
 .beautyguru-close:active {
-    color: #FF1372;
-    text-decoration: none;
     font-weight: bold;
-    cursor: pointer;
 }
 
 /* Responsive iframe */
