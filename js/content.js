@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request) {
     // Inject Modal
     if (request.message === "injectModal") {
         $.get(chrome.extension.getURL('modal.html'), function(data) {
@@ -19,6 +19,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         let title = document.getElementById("beautyguruTitle");
         title.textContent = request.title;
         title.href = request.url;
+
+        // Close and open in new tab
+        title.addEventListener("click", function() {
+            modal.style.display = "none";
+            iframe.removeAttribute("src");
+            title.removeAttribute("href");
+            // Send message for background script to open tab
+            chrome.runtime.sendMessage({message:'openTab', url: request.url});
+        });
         
         // Show modal
         let modal = document.getElementById('beautyguruModal');
@@ -29,8 +38,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         close.addEventListener("click", function() {
             modal.style.display = "none";
             iframe.removeAttribute("src");
+            title.removeAttribute("href");
         });
     }
 });
+
+
 
 

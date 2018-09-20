@@ -19,3 +19,12 @@ chrome.contextMenus.onClicked.addListener(function(info) {
 chrome.tabs.onActivated.addListener(function() {
     chrome.storage.sync.clear();
 }); 
+
+// Modal close and tab open
+chrome.runtime.onMessage.addListener(
+    function(request) {
+        if (request.message === "openTab") {
+            chrome.tabs.create({url: request.url, active: false});
+        }
+    }
+);
