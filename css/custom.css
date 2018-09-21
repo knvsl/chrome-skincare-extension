@@ -50,7 +50,7 @@ a:hover, a:active, a:focus {
 }
 
 .favicon {
-    margin-left: 24px;
+    margin-left: 18px;
     width: 16px;
     height: 16px;
 }
@@ -103,7 +103,6 @@ label {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
   }
   
@@ -115,7 +114,6 @@ label {
     left: 1px;
     bottom: 1px;
     background-color: white;
-    -webkit-transition: .4s;
     transition: .4s;
 }
   
@@ -128,7 +126,6 @@ input:focus + .slider {
 }
   
 input:checked + .slider:before {
-    -webkit-transform: translateX(14px);
     transform: translateX(14px);
 }
   
@@ -140,9 +137,28 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+.toggle-disabled, .toggle-disabled:before {
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.1); 
+    cursor: default;
+}
+
+.toggle-disabled:after {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 2px;
+    background: #FFFFFF;
+    content: "";
+    width: 100%;
+    display: block;
+    transform: rotate(30deg);
+}
+
 /* Help Guide Tool Tips */
 .help-guide {
     display: none;
+    z-index: 1;
     position: fixed;
     left: 0;
     top: 0;
@@ -230,6 +246,7 @@ input:checked + .slider:before {
     font-weight: bold;
     font-size: 14px;
 }
+
 
 
 

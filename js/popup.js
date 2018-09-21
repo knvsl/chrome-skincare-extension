@@ -4,24 +4,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Stores {anchor : checkbox} for each site
     let options = [
-        {link: document.getElementById("mua"), toggle: null},
-        {link: document.getElementById("cosdna"), toggle: null},
+        {link: document.getElementById("mua"), toggle: document.getElementById("muaCheck")},
+        {link: document.getElementById("cosdna"), toggle: document.getElementById("cosdnaCheck")},
         {link: document.getElementById("sephora"), toggle: document.getElementById("sephoraCheck")},
         {link: document.getElementById("beautypedia"), toggle: document.getElementById("beautypediaCheck")},
         {link: document.getElementById("pc"), toggle: document.getElementById("paulaschoiceCheck")}
     ]
 
+    // Cross out disabled toggles
+    chrome.windows.getCurrent(function(window) {
+        let sliders = document.getElementsByClassName("slider");
+        if (window.state === "fullscreen") {
+            for(let i = 0; i < sliders.length; i++) {
+                sliders[i].classList.add("toggle-disabled");
+             };
+        } else {
+            for(let i = 0; i < sliders.length; i++) {
+                slider.classList.remove("toggle-disabled");
+             };
+        }
+    });
+
     for (let i = 0; i < options.length; i++) {
-        let link = options[i].link;
-        let toggle = options[i].toggle;
         
+        // Enable/Disable toggle switch
+        let toggle = options[i].toggle;
+        chrome.windows.getCurrent(function(window) {
+            if (window.state === "fullscreen") {
+                toggle.disabled = true;
+            } else {
+                toggle.disabled = false;
+            }
+        });
+
+        let link = options[i].link;
         link.addEventListener("click", function() {
             if (urlsAreSet) {
-                // Open modal
+                // Open popup
                 if (toggle && toggle.checked) {
-                    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                        chrome.tabs.sendMessage(tabs[0].id, {message: "openModal", url: link.href, title: link.innerHTML});
-                    });
+                    chrome.windows.create({
+                        url: link.href,
+                        type: "popup", 
+                        height: 450, 
+                        width: 800,
+                        state: 'normal',
+                        focused: true
+                      });
                 } 
                 // Open new tab
                 else {
@@ -67,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let openButton = document.getElementById("openAll");
-    
+
     openButton.addEventListener("click", function(){
         if (urlsAreSet) {
             for (let i = 0; i < options.length; i++) {
