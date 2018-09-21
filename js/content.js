@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(function(request) {
     // Inject Modal
     if (request.message === "injectModal") {
-        $.get(chrome.extension.getURL('modal.html'), function(data) {
+        $.get(chrome.extension.getURL('html/modal.html'), function(data) {
             $($.parseHTML(data)).appendTo('body');
         });
     }
@@ -20,10 +20,9 @@ chrome.runtime.onMessage.addListener(function(request) {
         title.textContent = request.title;
         title.href = request.url;
 
-        // Close and open in new tab
+        // Close and notify background to open tab
         title.addEventListener("click", function() {
             hideModal(modal, iframe, title);
-            // Send message for background script to open tab
             chrome.runtime.sendMessage({message:'openTab', url: request.url});
         });
         
@@ -31,7 +30,7 @@ chrome.runtime.onMessage.addListener(function(request) {
         let modal = document.getElementById('beautyguruModal');
         modal.style.display = "block";
         
-        // Add listener to close modal
+        // Close modal
         let close = document.getElementById('beautyguruClose');
         close.addEventListener("click", function() {
             hideModal(modal, iframe, title);

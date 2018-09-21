@@ -18,21 +18,13 @@ chrome.contextMenus.onClicked.addListener(function(info) {
 // Clear on change tabs
 chrome.tabs.onActivated.addListener(function() {
     chrome.storage.sync.clear();
+    setBrowserAction();
 }); 
-
 
 // Disable on chrome settings pages
 chrome.tabs.onUpdated.addListener(function() {
-    chrome.tabs.getSelected(null, function(tab){
-        if (tab.url.startsWith("chrome://")){
-            console.log("true");
-            chrome.browserAction.disable();
-        } else {
-            chrome.browserAction.enable();
-        }
-    });
+    setBrowserAction();
 }); 
-
 
 // Modal close and tab open
 chrome.runtime.onMessage.addListener(
@@ -46,3 +38,17 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
+
+/**
+ * Disable browserAction on chrome settings pages, enable otherwise
+ */
+function setBrowserAction() {
+    chrome.tabs.getSelected(null, function(tab){
+        if (tab.url.startsWith("chrome://")){
+            console.log("true");
+            chrome.browserAction.disable();
+        } else {
+            chrome.browserAction.enable();
+        }
+    });
+}

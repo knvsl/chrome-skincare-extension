@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
 /**
  * Assigns the hrefs to the links 
  * 
