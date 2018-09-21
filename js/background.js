@@ -1,4 +1,5 @@
 // Create context menu
+// TODO: Add option to paste to ingredients -> save text & inject modal
 chrome.runtime.onInstalled.addListener(function() {
     chrome.contextMenus.create({
         "title": "Copy to BeautyGuru",

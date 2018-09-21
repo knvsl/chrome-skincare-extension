@@ -20,13 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
              };
         } else {
             for(let i = 0; i < sliders.length; i++) {
-                slider.classList.remove("toggle-disabled");
+                sliders[i].classList.remove("toggle-disabled");
              };
         }
     });
 
     for (let i = 0; i < options.length; i++) {
-        
         // Enable/Disable toggle switch
         let toggle = options[i].toggle;
         chrome.windows.getCurrent(function(window) {
@@ -66,11 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Paste text from storage
             textInput.value = data.selection;
             urlsAreSet = setURLs(options, data.selection);
-            
-            // Notify content script to inject modal
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {message: "injectModal"});
-            });
         }
     });
 
@@ -82,11 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Set search URLs
             urlsAreSet = setURLs(options, text);
-            
-            // Notify content script to inject modal
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {message: "injectModal"});
-            });
         }
     });
 
@@ -95,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let openButton = document.getElementById("openAll");
-
     openButton.addEventListener("click", function(){
         if (urlsAreSet) {
             for (let i = 0; i < options.length; i++) {
@@ -106,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let helpButton = document.getElementById("help");
-    
     helpButton.addEventListener("click", function(){
         // Help guide elements
         let helpTips = document.getElementsByClassName("help-guide");
@@ -118,6 +105,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 elem.style.display = "none";
             }
         }
+    });
+
+    // Notify content script to inject modal
+     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {message: "injectModal"});
+    });
+
+    let ingredientsButton = document.getElementById("ingredients");
+    ingredientsButton.addEventListener("click", function(){
+        // Open Modal
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {message: "openModal"});
+        });
     });
 });
 
