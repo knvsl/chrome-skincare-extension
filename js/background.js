@@ -20,6 +20,20 @@ chrome.tabs.onActivated.addListener(function() {
     chrome.storage.sync.clear();
 }); 
 
+
+// Disable on chrome settings pages
+chrome.tabs.onUpdated.addListener(function() {
+    chrome.tabs.getSelected(null, function(tab){
+        if (tab.url.startsWith("chrome://")){
+            console.log("true");
+            chrome.browserAction.disable();
+        } else {
+            chrome.browserAction.enable();
+        }
+    });
+}); 
+
+
 // Modal close and tab open
 chrome.runtime.onMessage.addListener(
     function(request) {

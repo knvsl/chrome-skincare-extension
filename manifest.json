@@ -23,7 +23,6 @@
       },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "exclude_globs": ["https://www.google.com/", "https://www.google.ca/"],
         "css": ["css/modal.css"],
         "js": ["js/jquery-3.3.1.min.js", "js/content.js"]
       }],

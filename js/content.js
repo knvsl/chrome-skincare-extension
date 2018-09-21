@@ -22,9 +22,7 @@ chrome.runtime.onMessage.addListener(function(request) {
 
         // Close and open in new tab
         title.addEventListener("click", function() {
-            modal.style.display = "none";
-            iframe.removeAttribute("src");
-            title.removeAttribute("href");
+            hideModal(modal, iframe, title);
             // Send message for background script to open tab
             chrome.runtime.sendMessage({message:'openTab', url: request.url});
         });
@@ -36,13 +34,23 @@ chrome.runtime.onMessage.addListener(function(request) {
         // Add listener to close modal
         let close = document.getElementById('beautyguruClose');
         close.addEventListener("click", function() {
-            modal.style.display = "none";
-            iframe.removeAttribute("src");
-            title.removeAttribute("href");
+            hideModal(modal, iframe, title);
         });
     }
 });
 
+/**
+ * Hide the modal
+ * 
+ * @param modal
+ * @param iframe
+ * @param title
+ */
+function hideModal(modal, iframe, title) {
+    modal.style.display = "none";
+    iframe.removeAttribute("src");
+    title.removeAttribute("href");
+}
 
 
 
