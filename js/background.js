@@ -24,7 +24,11 @@ chrome.tabs.onActivated.addListener(function() {
 chrome.runtime.onMessage.addListener(
     function(request) {
         if (request.message === "openTab") {
-            chrome.tabs.create({url: request.url, active: false});
+            chrome.tabs.query({url: request.url}, function(tabs) { 
+                if (tabs.length === 0) {
+                    chrome.tabs.create({url: request.url, active: false});
+                }
+            });
         }
     }
 );

@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let helpButton = document.getElementById("help");
-
+    
     helpButton.addEventListener("click", function(){
         // Help guide elements
         let helpTips = document.getElementsByClassName("help-guide");

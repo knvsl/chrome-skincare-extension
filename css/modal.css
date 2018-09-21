@@ -55,7 +55,7 @@
 
 .beautyguru-title {
     display: inline-block;
-    color: #383838;
+    color: #383838 !important;
     font-size: 24px; 
     text-decoration: none;
 }
@@ -66,7 +66,7 @@
 .beautyguru-close:hover,
 .beautyguru-close:active,
 .beautyguru-close:focus {
-    color: #FF1372;
+    color: #FF1372 !important;
     cursor: pointer;
     text-decoration: none;
 }
