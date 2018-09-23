@@ -1,16 +1,25 @@
 <html>
     <body>
-        <div id="beautyguruModal" class="beautyguru-modal">
-            <div class="beautyguru-modal-content">
-                <div class="beautyguru-header">
-                    <div class="beautyguru-header-items">
-                        <img id="beautyguruLogo" class="beautyguru-logo">
-                        <div id="beautyguruTitle" class="beautyguru-title">Ingredients</div>
-                        <a id="beautyguruClose" class="beautyguru-close">&#10006</a>
+        <div id="bgModal" class="bg-modal">
+            <div class="bg-modal-content">
+                <div class="bg-header">
+                    <div class="bg-header-items">
+                        <img id="bgLogo" class="bg-logo">
+                        <div id="bgTitle" class="bg-title">Ingredients</div>
+                        <a id="bgClose" class="bg-close">&#10006</a>
                     </div>
                 </div>
-                <div class="beautyguru-textarea-container">
-                    <textarea id="beautyguruTextarea" class="beautyguru-textarea" placeholder="Paste Ingredients Here..." spellcheck="false"></textarea>
+                <div class="bg-textarea-container">
+                    <textarea id="bgTextarea" class="bg-textarea" placeholder="Paste Comma Separated Ingredients Here..." spellcheck="false"></textarea>
+                    <div id="bgResults" class="bg-results"></div>
+                </div>
+                <div id="bgLegend" class="bg-legend">
+                    <span class="bg-legend-icon bg-legend-0">0</span>
+                    <span class="bg-legend-icon bg-legend-1">1</span>
+                    <span class="bg-legend-icon bg-legend-2">2</span>
+                    <span class="bg-legend-icon bg-legend-3">3</span>
+                    <span class="bg-legend-icon bg-legend-4">4</span>
+                    <span class="bg-legend-icon bg-legend-5">5</span>
                 </div>
             </div>
         </div>
