@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Open popup
                 if (toggle && toggle.checked) {
 
-                    let left = (screen.width/2)-(400);
-                    let top = (screen.height/2)-(250); 
+                    let left = Math.floor(screen.width/2) - 400;
+                    let top = Math.floor(screen.height/2) - 250; 
 
                     chrome.windows.create({
                         url: link.href,

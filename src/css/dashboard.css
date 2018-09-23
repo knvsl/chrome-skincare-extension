@@ -3,7 +3,7 @@
 input[type=text] {
     width: 300px;
     height: 40px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: "Courier New", Courier, monospace; 
     background-color: #E1E1E1;
     color: #5E5E5E;
@@ -12,14 +12,14 @@ input[type=text] {
 }
 
 ::placeholder { 
-    color: #FFFFFF;
-    font-size: 14px;
+    color: #5E5E5E;
+    font-size: 16px;
 }
 
 input:focus { outline: none; }
 
 a {
-    font-size: 14px;
+    font-size: 16px;
     color: #5E5E5E;
 }
 

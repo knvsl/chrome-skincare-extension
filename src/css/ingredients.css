@@ -10,7 +10,7 @@
     box-sizing: border-box; 
     overflow: scroll;
     font-family: "Courier New", Courier, monospace; 
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .ingredients:focus,
@@ -42,7 +42,7 @@
     overflow: scroll;
     border: 1px solid #000000;
     font-family: "Courier New", Courier, monospace; 
-    font-size: 12px;
+    font-size: 14px;
 	white-space: pre-wrap;
     word-wrap: break-word;
     padding: 2px 1px;

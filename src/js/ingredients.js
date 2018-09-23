@@ -80,7 +80,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    let magnify = document.getElementById("magnify");
+    magnify.addEventListener("click", function(){
+        
+        magnifyFont(textarea);
+
+        let results = document.getElementById("results")
+        if (results != undefined) {
+            magnifyFont(results);
+        }
+        
+    });
 });
+
+
+/**
+ * Toggles the font size
+ * 
+ * @param {Object} element 
+ */
+function magnifyFont(element) { 
+    if (element.style.fontSize === "14px" || element.style.fontSize === "") {
+        element.style.fontSize = "18px";
+    } else {
+        element.style.fontSize = "14px";
+    }
+}
 
 
 /**
