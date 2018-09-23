@@ -1,6 +1,4 @@
-.container {
-    padding: 5px 0;
-}
+.container { padding: 5px 0; }
 
 input[type=text] {
     width: 300px;
@@ -17,9 +15,7 @@ input[type=text] {
     font-size: 14px;
 }
 
-input:focus {
-    outline: none;
-}
+input:focus { outline: none; }
 
 a {
     font-size: 14px;
@@ -53,9 +49,7 @@ a:hover, a:active, a:focus {
     height: 16px;
 }
 
-.btn-container {
-    text-align: center;
-}
+.btn-container { text-align: center; }
 
 .btn.btn-outline-grey {
     color: #5E5E5E;
@@ -73,14 +67,10 @@ a:hover, a:active, a:focus {
     box-shadow: none;
 }
 
-.btn.btn-outline-grey:active {
-    background-color: #474747;
-}
+.btn.btn-outline-grey:active { background-color: #474747; }
 
 /* Toggle Switch modified from https://www.w3schools.com/howto/howto_css_switch.asp*/
-label {
-    vertical-align: middle !important;
-}
+label { vertical-align: middle !important; }
 
 .switch input { 
     vertical-align: middle !important;
@@ -115,25 +105,12 @@ label {
     transition: .4s;
 }
   
-input:checked + .slider {
-    background-color: #5E5E5E;
-}
+input:checked + .slider { background-color: #5E5E5E; }
+input:focus + .slider { box-shadow: 0 0 1px #5E5E5E; }
+input:checked + .slider:before { transform: translateX(14px); }
   
-input:focus + .slider {
-    box-shadow: 0 0 1px #5E5E5E;
-}
-  
-input:checked + .slider:before {
-    transform: translateX(14px);
-}
-  
-.slider.round {
-    border-radius: 12px;
-}
-  
-.slider.round:before {
-    border-radius: 50%;
-}
+.slider.round { border-radius: 12px; }
+.slider.round:before { border-radius: 50%; }
 
 .toggle-disabled, .toggle-disabled:before {
     overflow: hidden;

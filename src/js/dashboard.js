@@ -41,13 +41,19 @@ document.addEventListener('DOMContentLoaded', function() {
             if (urlsAreSet) {
                 // Open popup
                 if (toggle && toggle.checked) {
+
+                    let left = (screen.width/2)-(400);
+                    let top = (screen.height/2)-(250); 
+
                     chrome.windows.create({
                         url: link.href,
                         type: "popup", 
-                        height: 450, 
+                        height: 500, 
                         width: 800,
                         state: 'normal',
-                        focused: true
+                        left: left,
+                        top: top,
+                        focused: false
                       });
                 } 
                 // Open new tab
@@ -61,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let textInput = document.getElementById("productText");
 
     // Paste text from storage
-    chrome.storage.sync.get({"selection" : ""}, function(data) {
+    chrome.storage.sync.get({selection : ""}, function(data) {
         if (data.selection != "") {
             textInput.value = data.selection;
             urlsAreSet = setURLs(options, data.selection);
@@ -83,14 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
         urlsAreSet = removeURLs(options);
     });
 
-    
     let ingredients = document.getElementById("ingredients");
     ingredients.addEventListener("click", function(){
         let url = chrome.extension.getURL('src/html/ingredients.html');
         window.location.href = url;
     });
     
-
     let help = document.getElementById("help");
     help.addEventListener("click", function(){
         // Help guide elements

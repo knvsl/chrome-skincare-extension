@@ -1,6 +1,6 @@
-.textarea-container { 
-    padding: 10px;
-}
+.container { padding: 5px 0; }
+
+.textarea-container { padding: 10px; }
 
 .ingredients { 
     display: block;
@@ -91,13 +91,9 @@
     text-decoration: none;
 }
 
-.container {
-    padding: 5px 0;
-}
 
-.btn-container {
-    text-align: center;
-}
+
+.btn-container { text-align: center; }
 
 .btn.btn-outline-grey {
     color: #5E5E5E;
@@ -115,9 +111,7 @@
     box-shadow: none;
 }
 
-.btn.btn-outline-grey:active {
-    background-color: #474747;
-}
+.btn.btn-outline-grey:active { background-color: #474747; }
 
 /* Help Guide Tool Tips */
 .help-guide {

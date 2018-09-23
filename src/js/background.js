@@ -31,9 +31,8 @@ chrome.tabs.onUpdated.addListener(function() {
  * Disable browserAction on chrome settings pages, enable otherwise
  */
 function setBrowserAction() {
-    chrome.tabs.getSelected(null, function(tab){
-        if (tab.url.startsWith("chrome://")){
-            console.log("true");
+    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        if (tabs[0] != undefined && tabs[0].url.startsWith("chrome://")) {
             chrome.browserAction.disable();
         } else {
             chrome.browserAction.enable();
