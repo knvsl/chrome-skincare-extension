@@ -94,11 +94,3 @@
     float: left;
     margin-right: 12px;
 }
-
-@media screen and (max-width: 540px) {
-    .beautyguru-modal { display: none; }
-}
-
-@media screen and (max-height: 450px) {
-    .beautyguru-modal { display: none; }
-}

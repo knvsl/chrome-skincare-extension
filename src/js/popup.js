@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    textInput.addEventListener("input", function(e) {
+    textInput.addEventListener("input", function() {
         urlsAreSet = removeURLs(options);
     });
 

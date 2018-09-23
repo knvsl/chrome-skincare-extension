@@ -3,30 +3,30 @@
     "version": "1.0",
     "description": "Cross check products on the most popular beauty sites!",
     "icons": {
-        "16": "img/kiss16.png",
-        "32": "img/kiss32.png",
-        "48": "img/kiss48.png",
-        "128": "img/kiss128.png"
+        "16": "src/img/kiss16.png",
+        "32": "src/img/kiss32.png",
+        "48": "src/img/kiss48.png",
+        "128": "src/img/kiss128.png"
       },
     "browser_action": {
         "default_icon": {                    
-          "16": "img/kiss16.png",           
-          "24": "img/kiss24.png",          
-          "32": "img/kiss32.png"            
+          "16": "src/img/kiss16.png",           
+          "24": "src/img/kiss24.png",          
+          "32": "src/img/kiss32.png"            
           },
         "default_title": "beautyGuru",      
-        "default_popup": "html/popup.html"       
+        "default_popup": "src/html/popup.html"       
       },
     "background": {
-        "scripts": ["js/background.js"],
+        "scripts": ["src/js/background.js"],
         "persistent": false
       },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "css": ["css/modal.css"],
-        "js": ["vendor/jquery-3.3.1.min.js", "js/content.js"]
+        "css": ["src/css/modal.css"],
+        "js": ["vendor/jquery-3.3.1.min.js", "src/js/content.js"]
       }],
     "permissions": ["storage", "tabs", "activeTab", "contextMenus"],
-    "web_accessible_resources": ["html/modal.html", "img/kiss48.png", "css/modal.csss"],
+    "web_accessible_resources": ["src/html/modal.html", "src/img/kiss48.png", "src/css/modal.csss", "src/data/ingredients.json"],
     "manifest_version": 2
 }
