@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let textarea = document.getElementById("textarea");
         
     // Paste text from storage
-    chrome.storage.sync.get({selection : ""}, function(data) {
-        if (data.selection != "") {
-            textarea.value = data.selection;
+    chrome.storage.sync.get({ingredients : ""}, function(data) {
+        if (data.ingredients != "") {
+            textarea.value = data.ingredients;
         }
     });
 

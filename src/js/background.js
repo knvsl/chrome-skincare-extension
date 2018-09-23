@@ -2,19 +2,27 @@
 // TODO: Add option to paste to ingredients -> save text & inject modal
 chrome.runtime.onInstalled.addListener(function() {
     chrome.contextMenus.create({
-        "title": "Copy to BeautyGuru",
+        "title": "Copy to Product Search",
         "contexts": ["selection"],
-        "id": "beautyguru"
+        "id": "beautyguruProduct"
+    });
+    chrome.contextMenus.create({
+        "title": "Copy to Ingredients",
+        "contexts": ["selection"],
+        "id": "beautyguruIngredients"
     });
 });
 
 // Save selection to storage
 chrome.contextMenus.onClicked.addListener(function(info) {
-    if(info.menuItemId === "beautyguru") {
-        let text = info.selectionText;
-        chrome.storage.sync.set({selection: text});
+    let text = info.selectionText;
+    if (info.menuItemId === "beautyguruProduct") {
+        chrome.storage.sync.set({product: text});
+    } else {
+        chrome.storage.sync.set({ingredients: text});
     }
 });
+
 
 // Clear on change tabs
 chrome.tabs.onActivated.addListener(function() {

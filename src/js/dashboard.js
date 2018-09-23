@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let textInput = document.getElementById("productText");
 
     // Paste text from storage
-    chrome.storage.sync.get({selection : ""}, function(data) {
-        if (data.selection != "") {
-            textInput.value = data.selection;
-            urlsAreSet = setURLs(options, data.selection);
+    chrome.storage.sync.get({product : ""}, function(data) {
+        if (data.product != "") {
+            textInput.value = data.product;
+            urlsAreSet = setURLs(options, data.product);
         }
     });
 
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Enter') {  
             // Save to storage
             let text = textInput.value; 
-            chrome.storage.sync.set({selection: text});
+            chrome.storage.sync.set({product: text});
             
             // Set search URLs
             urlsAreSet = setURLs(options, text);

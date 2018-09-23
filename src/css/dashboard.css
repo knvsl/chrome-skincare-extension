@@ -3,7 +3,8 @@
 input[type=text] {
     width: 300px;
     height: 40px;
-    font-size: 18px;
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace; 
     background-color: #E1E1E1;
     color: #5E5E5E;
     border: none;
