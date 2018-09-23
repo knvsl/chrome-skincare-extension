@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="../js/popup.js"></script>
-        <script src="../../vendor/bootstrap.min.js"></script>
-        <link href="../css/custom.css" rel="stylesheet">
+        <script src="../js/dashboard.js"></script>
+        <link href="../css/dashboard.css" rel="stylesheet">
         <link href="../../vendor/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,10 +16,10 @@
             Click to open in a new tab
         </div>
         <div class="help-guide help-guide-toggle">
-            Toggle to open as a popup instead of tab (DISABLED in Fullscreen)
+            Toggle to open as a popup (DISABLED in Fullscreen)
         </div>
         <div class="help-guide help-guide-button">
-            Click to open all links as new tabs
+            Click to view ingredients
         </div>
         <!-- Popup -->
         <div class="container">
@@ -87,11 +86,10 @@
                             </label>
                         </td>
                     </tr>
-                    <tr><td class="footer" width="300px"></td></tr>
+                    <tr><td class="footer" width="250px"></td></tr>
                 </tbody>
             </table>
             <div class="btn-container">
-                <button id="openAll" type="button" class="btn btn-sm btn-outline-grey">Open All</button>
                 <button id="ingredients" type="button" class="btn btn-sm btn-outline-grey">Ingredients</button>
                 <button id="help" type="button" class="btn btn-sm btn-outline-grey">?</button>
             </div>

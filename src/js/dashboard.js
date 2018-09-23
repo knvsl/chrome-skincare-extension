@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
+    
     let textInput = document.getElementById("productText");
 
     // Paste text from storage
@@ -83,18 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
         urlsAreSet = removeURLs(options);
     });
 
-    let openButton = document.getElementById("openAll");
-    openButton.addEventListener("click", function(){
-        if (urlsAreSet) {
-            for (let i = 0; i < options.length; i++) {
-                let link = options[i].link;
-                chrome.tabs.create({url: link.href, active: false});
-            }
-        }
+    
+    let ingredients = document.getElementById("ingredients");
+    ingredients.addEventListener("click", function(){
+        let url = chrome.extension.getURL('src/html/ingredients.html');
+        window.location.href = url;
     });
+    
 
-    let helpButton = document.getElementById("help");
-    helpButton.addEventListener("click", function(){
+    let help = document.getElementById("help");
+    help.addEventListener("click", function(){
         // Help guide elements
         let helpTips = document.getElementsByClassName("help-guide");
         
@@ -107,18 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Notify content script to inject modal
-     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {message: "injectModal"});
-    });
-
-    let ingredientsButton = document.getElementById("ingredients");
-    ingredientsButton.addEventListener("click", function(){
-        // Open Modal
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            chrome.tabs.sendMessage(tabs[0].id, {message: "openModal"});
-        });
-    });
 });
 
 /**

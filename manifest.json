@@ -15,18 +15,13 @@
           "32": "src/img/kiss32.png"            
           },
         "default_title": "beautyGuru",      
-        "default_popup": "src/html/popup.html"       
+        "default_popup": "src/html/dashboard.html"       
       },
     "background": {
         "scripts": ["src/js/background.js"],
         "persistent": false
       },
-    "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "css": ["src/css/modal.css"],
-        "js": ["vendor/jquery-3.3.1.min.js", "src/js/content.js"]
-      }],
     "permissions": ["storage", "tabs", "activeTab", "contextMenus"],
-    "web_accessible_resources": ["src/html/modal.html", "src/img/kiss48.png", "src/css/modal.csss", "src/data/ingredients.json"],
+    "web_accessible_resources": ["src/data/ingredients.json"],
     "manifest_version": 2
 }

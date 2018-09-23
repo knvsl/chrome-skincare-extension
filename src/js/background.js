@@ -27,19 +27,6 @@ chrome.tabs.onUpdated.addListener(function() {
     setBrowserAction();
 }); 
 
-// Modal close and tab open
-chrome.runtime.onMessage.addListener(
-    function(request) {
-        if (request.message === "openTab") {
-            chrome.tabs.query({url: request.url}, function(tabs) { 
-                if (tabs.length === 0) {
-                    chrome.tabs.create({url: request.url, active: false});
-                }
-            });
-        }
-    }
-);
-
 /**
  * Disable browserAction on chrome settings pages, enable otherwise
  */

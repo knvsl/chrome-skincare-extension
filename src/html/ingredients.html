@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <script src="../js/ingredients.js"></script>
+        <link href="../css/ingredients.css" rel="stylesheet">
+        <link href="../../vendor/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Help Guide -->
+        <div class="help-guide help-guide-textarea">
+            Enter a comma separated list of ingredients + hit ENTER to analyze<br><br>
+            Ingredients will be highlighted by comedogenic rating if known
+        </div>
+        <div class="help-guide help-guide-rating">
+            Comedogenic ratings - 0 is non comedogenic,  5 is extremely comedogenic
+        </div>
+        <div class="help-guide help-guide-button">
+            Click to view dashboard
+        </div>
+        <div class="container">
+            <div class="textarea-container">
+                <textarea id="textarea" class="ingredients" placeholder="Paste Comma Separated Ingredients Here..." spellcheck="false"></textarea>
+                <div id="results" class="results"></div>
+            </div>
+            <div id="legend" class="legend">
+                <span class="legend-icon legend-0">0</span>
+                <span class="legend-icon legend-1">1</span>
+                <span class="legend-icon legend-2">2</span>
+                <span class="legend-icon legend-3">3</span>
+                <span class="legend-icon legend-4">4</span>
+                <span class="legend-icon legend-5">5</span>
+                <a id="edit" class="edit">Edit</a>
+            </div>
+            <div class="btn-container">
+                <button id="dashboard" type="button" class="btn btn-sm btn-outline-grey">Dashboard</button>
+                <button id="help" type="button" class="btn btn-sm btn-outline-grey">?</button>
+            </div>
+        </div>
+    </body>
+</html>

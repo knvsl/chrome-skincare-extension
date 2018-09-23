@@ -1,0 +1,188 @@
+.textarea-container { 
+    padding: 10px;
+}
+
+.ingredients { 
+    display: block;
+    margin: auto;
+    width: 280px;
+    height: 190px;
+    box-sizing: border-box; 
+    overflow: scroll;
+    font-family: "Courier New", Courier, monospace; 
+    font-size: 12px;
+}
+
+.ingredients:focus,
+.ingredients:active {
+    outline: none;
+    border-color:#FF1372;
+    box-shadow:0 0 1px #FF1372;
+}
+
+/* Highlighting */
+.highlight {
+    color: #000000;
+    background-color: transparent;
+}
+
+.rating-0 { background-color: #D5F5E3; }
+.rating-1 { background-color: #D6EAF8; }
+.rating-2 { background-color: #FCF3CF; }
+.rating-3 { background-color: #FAE5D3; }
+.rating-4 { background-color: #FADBD8; }
+.rating-5 { background-color: #E8DAEF; }
+
+.results {
+    display: none;
+    margin: auto;
+    width: 280px;
+    height: 190px;
+    box-sizing: border-box; 
+    overflow: scroll;
+    border: 1px solid #000000;
+    font-family: "Courier New", Courier, monospace; 
+    font-size: 12px;
+	white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 2px 1px;
+    color: #000000; 
+}
+
+/* Rating Legend */
+.legend {
+    display: block;
+    margin: 0 5px 10px 5px;
+    padding: 2px;
+    text-align: center;
+}
+
+.legend-icon {
+    background: transparent;
+    border-radius: 0.2em;
+    font-size: 14px;
+    color: #5E5E5E;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    text-align: center;
+    width: 1.6em; 
+  }
+
+.legend-0 { background: #D5F5E3; }
+.legend-1 { background: #D6EAF8; }
+.legend-2 { background: #FCF3CF; }
+.legend-3 { background: #FAE5D3; }
+.legend-4 { background: #FADBD8; }
+.legend-5 { background: #E8DAEF; }
+
+.edit {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #5E5E5E !important;
+}
+
+.edit:hover,
+.edit:active,
+.edit:focus {
+    color: #FF1372 !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container {
+    padding: 5px 0;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.btn.btn-outline-grey {
+    color: #5E5E5E;
+    background-color: #FFFFFF;
+    border-color: #5E5E5E;
+}
+
+.btn.btn-outline-grey:hover {
+    color: #FFFFFF;
+    background-color: #5E5E5E;
+}
+.btn.btn-outline-grey:focus,
+.btn.btn-outline-grey:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.btn.btn-outline-grey:active {
+    background-color: #474747;
+}
+
+/* Help Guide Tool Tips */
+.help-guide {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.75); 
+    border-radius: 5px;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    overflow: visible;
+    text-align: center;
+}
+
+.help-guide-button {
+    margin-top: 225px;
+    margin-left: 10%;
+    width: 75px;
+}
+
+.help-guide-button:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    left: 100%;
+    top: 50%;
+    position: absolute;
+    border: 10px solid transparent;
+    border-left-color: rgba(0,0,0,0.75); 
+}
+
+.help-guide-textarea {
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
+}
+
+.help-guide-textarea:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    top: 100%;
+    left: 50%;
+    position: absolute;
+    border: 10px solid transparent;
+    border-top-color: rgba(0,0,0,0.75); 
+}
+
+.help-guide-rating {
+    margin-top: 50%;
+    margin-left: 10%;
+    width: 80%;
+}
+
+.help-guide-rating:before {
+    content: ' ';
+    height: 0;
+    width: 0;
+    top: 100%;
+    left: 50%;
+    position: absolute;
+    border: 10px solid transparent;
+    border-top-color: rgba(0,0,0,0.75); 
+}
