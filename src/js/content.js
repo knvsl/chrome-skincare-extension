@@ -53,6 +53,12 @@ chrome.runtime.onMessage.addListener(function(request) {
 
                         let legend = document.getElementById("bgLegend");
                         legend.style.display = "block";
+
+                        let back = document.getElementById("bgBack");
+                        back.addEventListener("click", function() {
+                            legend.style.display = "none";
+                            textarea.style.display = "block";
+                        });
                         
                     });
                 }

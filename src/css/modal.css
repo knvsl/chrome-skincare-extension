@@ -149,3 +149,16 @@
 .bg-legend-4 { background: #FADBD8; }
 .bg-legend-5 { background: #E8DAEF; }
 
+.bg-back {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.bg-back:hover,
+.bg-back:active,
+.bg-back:focus {
+    color: #FF1372 !important;
+    cursor: pointer;
+    text-decoration: none;
+}
