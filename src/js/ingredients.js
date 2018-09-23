@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             let ingredients = textarea.value.split(",");
-            ingredients.map(str => str.trim());
 
             // Fetch comedogenic json
             let url = chrome.runtime.getURL('src/data/ingredients.json');
@@ -40,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Highlight by rating
                         if (index > -1) {
                             let rating = comedogenic[index].rating;
-                            ingredients[i] = ingredients[i].replace(/.*\b/g, '<mark class="highlight ' + colours[rating] + '">$&</mark>');
+                            ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight ' + colours[rating] + '">$&</mark>');
                         } else {
-                            ingredients[i] = ingredients[i].replace(/.*\b/g, '<mark class="highlight">$&</mark>');
+                            ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight">$&</mark>');
                         }
                     }
 
