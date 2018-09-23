@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let textInput = document.getElementById("productText");
 
+    // Paste text from storage
     chrome.storage.sync.get({"selection" : ""}, function(data) {
         if (data.selection != "") {
-            // Paste text from storage
             textInput.value = data.selection;
             urlsAreSet = setURLs(options, data.selection);
         }

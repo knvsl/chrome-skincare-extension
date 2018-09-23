@@ -16,6 +16,14 @@ chrome.runtime.onMessage.addListener(function(request) {
         modal.style.display = "block";
 
         let textarea = document.getElementById("bgTextarea");
+        
+        // Paste text from storage
+        chrome.storage.sync.get({"selection" : ""}, function(data) {
+            if (data.selection != "") {
+                textarea.value = data.selection;
+            }
+        });
+
         textarea.addEventListener("keydown", function(e) {
 
             if(e.key === "Enter") {
@@ -39,9 +47,9 @@ chrome.runtime.onMessage.addListener(function(request) {
                             // Highlight by rating
                             if (index > -1) {
                                 let c = comedogenic[index].rating;
-                                ingredients[i] = ingredients[i].replace(/.*\b/g, '<mark class="bg-mark ' + colours[c] + '">$&</mark>');
+                                ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="bg-mark ' + colours[c] + '">$&</mark>');
                             } else {
-                                ingredients[i] = ingredients[i].replace(/.*\b/g, '<mark class="bg-mark">$&</mark>');
+                                ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="bg-mark">$&</mark>');
                             }
                         }
 
@@ -56,6 +64,7 @@ chrome.runtime.onMessage.addListener(function(request) {
 
                         let back = document.getElementById("bgBack");
                         back.addEventListener("click", function() {
+                            results.style.display = "none";
                             legend.style.display = "none";
                             textarea.style.display = "block";
                         });
