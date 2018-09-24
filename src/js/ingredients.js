@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     textarea.addEventListener("keydown", function(e) {
         if(e.key === "Enter") {
             let ingredients = parseIngredients(textarea);
-            analyze(ingredients, textarea);
+            analyze(ingredients);
         }
     });
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 hideResults();
             } else {
                 let ingredients = parseIngredients(textarea);
-                analyze(ingredients, textarea);
+                analyze(ingredients);
             }
         });
 
@@ -93,34 +93,31 @@ function parseIngredients(textarea) {
  * Displays the ingredients colour coded by comedogenic rating
  * 
  * @param {String[]} ingredients 
- * @param {Object} textarea 
  */
-function analyze(ingredients, textarea) {
-    // Fetch comedogenic json
-    let url = chrome.runtime.getURL('src/data/ingredients.json');
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(comedogenic) {   
-            // Highlight classes
-            let colours = ["rating-0","rating-1","rating-2","rating-3","rating-4","rating-5"];
+function analyze(ingredients) {
+    chrome.storage.local.get({ratings: ""}, function(data) {
+        
+        let comedogenic = data.ratings;
 
-            for (let i = 0; i < ingredients.length; i++) {
-                // Search in comedogenic ingredients
-                let index = binarySearch(ingredients[i], comedogenic);
+        // Highlight classes
+        let colours = ["rating-0","rating-1","rating-2","rating-3","rating-4","rating-5"];
 
-                // Highlight by rating
-                if (index > -1) {
-                    let rating = comedogenic[index].rating;
-                    ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight ' + colours[rating] + '">$&</mark>');
-                } else {
-                    ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight">$&</mark>');
-                }
+        for (let i = 0; i < ingredients.length; i++) {
+            // Search in comedogenic ingredients
+            let index = binarySearch(ingredients[i], comedogenic);
+
+            // Highlight by rating
+            if (index > -1) {
+                let rating = comedogenic[index].rating;
+                ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight ' + colours[rating] + '">$&</mark>');
+            } else {
+                ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight">$&</mark>');
             }
-            // Display colour coded ingredients
-            showResults(ingredients);
-        });
+        }
+
+        // Display colour coded ingredients
+        showResults(ingredients);
+    }); 
 }
 
 

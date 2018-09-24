@@ -22,6 +22,6 @@
         "persistent": false
       },
     "permissions": ["storage", "tabs", "activeTab", "contextMenus"],
-    "web_accessible_resources": ["src/data/ingredients.json"],
+    "web_accessible_resources": ["src/data/ingredients.min.json"],
     "manifest_version": 2
 }
