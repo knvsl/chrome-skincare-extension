@@ -212,7 +212,7 @@ function resetSize(element) {
 function magnifyFont(element) { 
     if (element.id === "results" || element.id === "textarea") {
         if (element.style.fontSize === "14px" || element.style.fontSize === "") {
-            element.style.fontSize = "18px";
+            element.style.fontSize = "16px";
         } else {
             element.style.fontSize = "14px";
         }
