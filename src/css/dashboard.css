@@ -1,6 +1,16 @@
+html {
+    position: relative;
+    min-width: 330px;
+    min-height: 300px;
+    height: 100%;
+}
+
 body { overflow-y: scroll; }
 
-.container { padding: 5px 0; }
+.container { 
+    margin-top: 10px;
+    padding: 5px 0; 
+}
 
 input[type=text] {
     width: 300px;
@@ -32,12 +42,12 @@ a:hover, a:active, a:focus {
 }
 
 .table-borderless {
-    margin-top: 10px;
+    margin-top: 20px;
     border-collapse: collapse !important;
 }
 
 .table-borderless tr, .table-borderless td{
-    padding: 4px 0 !important;
+    padding: 5px 0 !important;
     color: #5E5E5E;
 }
 

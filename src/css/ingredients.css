@@ -1,3 +1,10 @@
+html {
+    position: relative;
+    min-width: 330px;
+    min-height: 300px;
+    height: 100%;
+}
+
 body { overflow-y: scroll; }
 
 .container { padding: 5px 0; }
