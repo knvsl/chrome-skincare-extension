@@ -21,7 +21,7 @@
         "scripts": ["src/js/background.js"],
         "persistent": false
       },
-    "permissions": ["storage", "tabs", "activeTab", "contextMenus"],
+    "permissions": ["storage", "activeTab", "contextMenus"],
     "web_accessible_resources": ["src/data/ingredients.min.json"],
     "manifest_version": 2
 }

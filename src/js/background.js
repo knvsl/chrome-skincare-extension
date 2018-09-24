@@ -37,27 +37,7 @@ chrome.contextMenus.onClicked.addListener(function(info) {
 // Clear on change tabs
 chrome.tabs.onActivated.addListener(function() {
     chrome.storage.sync.remove(["product", "ingredients"]);
-    setBrowserAction();
 }); 
-
-// Disable on chrome settings pages
-chrome.tabs.onUpdated.addListener(function() {
-    setBrowserAction();
-}); 
-
-/**
- * Disable browserAction on chrome settings pages, enable otherwise
- */
-function setBrowserAction() {
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-        if (tabs[0] != undefined && tabs[0].url.startsWith("chrome://")) {
-            chrome.browserAction.disable();
-        } else {
-            chrome.browserAction.enable();
-        }
-    });
-}
-
 
 /**
  * Fetch the ingredients.json and load into local storage
