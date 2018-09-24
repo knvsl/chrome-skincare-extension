@@ -72,13 +72,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Set URLs on ENTER
     textInput.addEventListener("keydown", function(e) {
         if (e.key === 'Enter') {  
-            // Save to storage
             let text = textInput.value; 
             chrome.storage.sync.set({product: text});
             
-            // Set search URLs
             urlsAreSet = setURLs(options, text);
         }
     });
@@ -99,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let help = document.getElementById("help");
     help.addEventListener("click", function(){
         let helpTips = document.getElementsByClassName("help-guide");
-        
+
         for (let elem of helpTips) {
             if (!elem.style.display || elem.style.display === "none") {
                 elem.style.display = "block";
@@ -156,7 +155,7 @@ function setURLs (options, text) {
  * 
  * @param {Object[]} options 
  * 
- * @return {boolean} Whether or not the hrefs are set
+ * @return {boolean} Whether or not the links are set
  */
 function removeURLs(options) {
     for (let i = 0; i < options.length; i++) {

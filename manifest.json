@@ -1,7 +1,7 @@
 {
     "name": "beautyGuru",
     "version": "1.0",
-    "description": "Cross check products on the most popular beauty sites!",
+    "description": "Analyze ingredients and cross check products on your favourite beauty sites!",
     "icons": {
         "16": "src/img/kiss16.png",
         "32": "src/img/kiss32.png",

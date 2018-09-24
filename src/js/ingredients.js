@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Analyze/Edit Button
+    // Analyze/Edit ingredients
     let edit = document.getElementById("edit");
         edit.addEventListener("click", function() { 
             if (edit.textContent === "Edit") {
@@ -38,6 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle tooltips
     let help = document.getElementById("help");
     help.addEventListener("click", function(){
+
+        let textarea = document.getElementById("textarea");
+        resetSize(textarea);
+
+        let results = document.getElementById("results");
+        resetSize(results);
+
         let helpTips = document.getElementsByClassName("help-guide");
         
         for (let elem of helpTips) {
@@ -63,19 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/**
- * Switches from results back to textarea
- */
-function hideResults() {
-    let results = document.getElementById("results");
-    results.style.display = "none";
-
-    let textarea = document.getElementById("textarea");
-    textarea.style.display = "block";
-
-    let edit = document.getElementById("edit");
-    edit.textContent = "Analyze";
-}
 
 /**
  * Parses ingredients from the textarea input
@@ -92,24 +86,6 @@ function parseIngredients(textarea) {
     }
 
     return textarea.value.split(",");
-}
-
-
-/**
- * Hide the textarea and show the analyzed ingredients results
- * 
- * @param {String[]} ingredients 
- */
-function showResults(ingredients) {
-    let textarea = document.getElementById("textarea");
-    textarea.style.display = "none";
-
-    let results = document.getElementById("results");
-    results.innerHTML = ingredients;
-    results.style.display = "block";
-
-    let edit = document.getElementById("edit");
-    edit.textContent = "Edit";
 }
 
 
@@ -142,23 +118,9 @@ function analyze(ingredients, textarea) {
                     ingredients[i] = ingredients[i].trim().replace(/.*\b/g, '<mark class="highlight">$&</mark>');
                 }
             }
-            
+            // Display colour coded ingredients
             showResults(ingredients);
         });
-}
-
-
-/**
- * Toggles the font size
- * 
- * @param {Object} element 
- */
-function magnifyFont(element) { 
-    if (element.style.fontSize === "14px" || element.style.fontSize === "") {
-        element.style.fontSize = "18px";
-    } else {
-        element.style.fontSize = "14px";
-    }
 }
 
 
@@ -194,8 +156,70 @@ function binarySearch(target, ingredients) {
     }
 
     return -1;
-
 }
 
+
+/**
+ * Hide the results and show textarea
+ */
+function hideResults() {
+    let results = document.getElementById("results");
+    results.style.display = "none";
+
+    let textarea = document.getElementById("textarea");
+    resetSize(textarea);
+    textarea.style.display = "block";
+
+    let edit = document.getElementById("edit");
+    edit.textContent = "Analyze";
+}
+
+
+/**
+ * Hide the textarea and show the analyzed ingredients results
+ * 
+ * @param {String[]} ingredients 
+ */
+function showResults(ingredients) {
+    let textarea = document.getElementById("textarea");
+    textarea.style.display = "none";
+
+    let results = document.getElementById("results");
+    results.innerHTML = ingredients;
+    resetSize(results);
+    results.style.display = "block";
+
+    let edit = document.getElementById("edit");
+    edit.textContent = "Edit";
+}
+
+
+/**
+ * Resets ingredients text to default size
+ * 
+ * @param {Object} element
+ */
+function resetSize(element) {
+    if (element.id === "results" || element.id === "textarea") {
+        element.style.height = "190px";
+        element.style.width = "280px";
+    }
+}
+
+
+/**
+ * Toggles the font size
+ * 
+ * @param {Object} element 
+ */
+function magnifyFont(element) { 
+    if (element.id === "results" || element.id === "textarea") {
+        if (element.style.fontSize === "14px" || element.style.fontSize === "") {
+            element.style.fontSize = "18px";
+        } else {
+            element.style.fontSize = "14px";
+        }
+    }
+}
 
 

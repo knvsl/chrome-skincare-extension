@@ -1,3 +1,5 @@
+body { overflow-y: scroll; }
+
 .container { padding: 5px 0; }
 
 .textarea-container { padding: 10px; }
@@ -43,10 +45,12 @@
     border: 1px solid #000000;
     font-family: "Courier New", Courier, monospace; 
     font-size: 14px;
-	white-space: pre-wrap;
+    white-space: pre-wrap;
     word-wrap: break-word;
     padding: 2px 1px;
     color: #000000; 
+    resize: vertical;
+    overflow: auto;
 }
 
 /* Rating Legend */
@@ -87,11 +91,9 @@
 .edit:active,
 .edit:focus {
     color: #FF1372 !important;
-    cursor: pointer;
+    cursor: pointer !important;
     text-decoration: none;
 }
-
-
 
 .btn-container { text-align: center; }
 
@@ -133,7 +135,7 @@
 .help-guide-button {
     margin-top: 225px;
     margin-left: 10%;
-    width: 75px;
+    width: 90px;
 }
 
 .help-guide-button:before {
