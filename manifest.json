@@ -1,7 +1,7 @@
 {
-    "name": "beautyGuru",
+    "name": "beautyHelper",
     "version": "1.0",
-    "description": "Analyze ingredients and cross check products on your favourite beauty sites!",
+    "description": "Analyze ingredients and cross check products on your favourite cosmetic sites!",
     "icons": {
         "16": "src/img/kiss16.png",
         "32": "src/img/kiss32.png",
@@ -14,7 +14,7 @@
           "24": "src/img/kiss24.png",          
           "32": "src/img/kiss32.png"            
           },
-        "default_title": "beautyGuru",      
+        "default_title": "beautyHelper",      
         "default_popup": "src/html/dashboard.html"       
       },
     "background": {

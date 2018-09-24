@@ -135,7 +135,7 @@ body { overflow-y: scroll; }
 .help-guide-button {
     margin-top: 225px;
     margin-left: 10%;
-    width: 90px;
+    width: 100px;
 }
 
 .help-guide-button:before {

@@ -4,12 +4,12 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.contextMenus.create({
         "title": "Copy to Product Search",
         "contexts": ["selection"],
-        "id": "beautyguruProduct"
+        "id": "Product"
     });
     chrome.contextMenus.create({
         "title": "Copy to Ingredients",
         "contexts": ["selection"],
-        "id": "beautyguruIngredients"
+        "id": "Ingredients"
     });
 
     loadIngredients();
@@ -27,7 +27,7 @@ chrome.runtime.onStartup.addListener(function() {
 // Save selection to storage
 chrome.contextMenus.onClicked.addListener(function(info) {
     let text = info.selectionText;
-    if (info.menuItemId === "beautyguruProduct") {
+    if (info.menuItemId === "Product") {
         chrome.storage.sync.set({product: text});
     } else {
         chrome.storage.sync.set({ingredients: text});
