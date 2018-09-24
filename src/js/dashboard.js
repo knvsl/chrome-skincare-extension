@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let urlsAreSet = false;
 
-    // Stores {anchor : checkbox} for each site
     let options = [
         {link: document.getElementById("mua"), toggle: document.getElementById("muaCheck")},
         {link: document.getElementById("cosdna"), toggle: document.getElementById("cosdnaCheck")},
@@ -25,8 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Link event handlers
     for (let i = 0; i < options.length; i++) {
-        // Enable/Disable toggle switch
+        // Enable/Disable toggle switches
         let toggle = options[i].toggle;
         chrome.windows.getCurrent(function(window) {
             if (window.state === "fullscreen") {
@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // Open tab/popup
         let link = options[i].link;
         link.addEventListener("click", function() {
             if (urlsAreSet) {
-                // Open popup
                 if (toggle && toggle.checked) {
 
                     let left = Math.floor(screen.width/2) - 400;
@@ -55,9 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         top: top,
                         focused: false
                       });
-                } 
-                // Open new tab
-                else {
+                } else {
                     chrome.tabs.create({url: link.href, active: false});
                 }
             }
@@ -85,19 +83,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Clear on change
     textInput.addEventListener("input", function() {
         urlsAreSet = removeURLs(options);
     });
 
+    // Switch to ingredients view
     let ingredients = document.getElementById("ingredients");
     ingredients.addEventListener("click", function(){
         let url = chrome.extension.getURL('src/html/ingredients.html');
         window.location.href = url;
     });
     
+    // Toggle tooltips
     let help = document.getElementById("help");
     help.addEventListener("click", function(){
-        // Help guide elements
         let helpTips = document.getElementsByClassName("help-guide");
         
         for (let elem of helpTips) {

@@ -1,5 +1,4 @@
 // Create context menu
-// TODO: Add option to paste to ingredients -> save text & inject modal
 chrome.runtime.onInstalled.addListener(function() {
     chrome.contextMenus.create({
         "title": "Copy to Product Search",
@@ -22,7 +21,6 @@ chrome.contextMenus.onClicked.addListener(function(info) {
         chrome.storage.sync.set({ingredients: text});
     }
 });
-
 
 // Clear on change tabs
 chrome.tabs.onActivated.addListener(function() {

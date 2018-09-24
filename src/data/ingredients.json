@@ -97,19 +97,19 @@
   },
   {
     "ingredient": "Argan Oil",
-    "rating": 3
+    "rating": 0
   },
   {
     "ingredient": "Argania Spinosa",
-    "rating": 3
+    "rating": 0
   },
   {
     "ingredient": "Argania Spinosa Kernel Oil",
-    "rating": 3
+    "rating": 0
   },
   {
     "ingredient": "Argania Spinosa Oil",
-    "rating": 3
+    "rating": 0
   },
   {
     "ingredient": "Ascophyllum Nodosum",
@@ -913,7 +913,7 @@
   },
   {
     "ingredient": "Palmitic acid",
-    "rating": 3
+    "rating": 2
   },
   {
     "ingredient": "Panthenol",
