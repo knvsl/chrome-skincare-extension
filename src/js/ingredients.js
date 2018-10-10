@@ -137,12 +137,12 @@ function binarySearch(target, ingredients) {
     target = target.trim().toUpperCase();
 
     let left = 0;
-    let right = ingredients.length;
-
+    let right = ingredients.length - 1;
+    
     while (left <= right) {
 
         let mid = Math.floor((left + right) / 2);
-
+        
         if (target < ingredients[mid].ingredient.toUpperCase()) {
             right = mid - 1;
         } else if (target > ingredients[mid].ingredient.toUpperCase()) {

@@ -1,6 +1,6 @@
 {
     "name": "beautyHelper",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "For skincare + makeup enthusiasts! Analyze cosmetic ingredients and search products on your favourite beauty sites ❣️",
     "icons": {
         "16": "src/img/kiss16.png",
@@ -18,8 +18,7 @@
         "default_popup": "src/html/ingredients.html"       
       },
     "background": {
-        "scripts": ["src/js/background.js"],
-        "persistent": false
+        "scripts": ["src/js/background.js"]
       },
     "permissions": ["storage", "activeTab", "contextMenus"],
     "web_accessible_resources": ["src/data/ingredients.min.json"],
