@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {link: document.getElementById("mua"), toggle: document.getElementById("muaCheck")},
         {link: document.getElementById("cosdna"), toggle: document.getElementById("cosdnaCheck")},
         {link: document.getElementById("sephora"), toggle: document.getElementById("sephoraCheck")},
-        {link: document.getElementById("beautypedia"), toggle: document.getElementById("beautypediaCheck")}
+        {link: document.getElementById("beautypedia"), toggle: document.getElementById("beautypediaCheck")},
+        {link: document.getElementById("skincarisma"), toggle: document.getElementById("skincarismaCheck")}
     ]
 
     // Cross out disabled toggles
@@ -134,6 +135,9 @@ function setURLs (options, text) {
                 break;
             case "beautypedia":
                 link.href = "https://www.beautypedia.com/?s=" + encodeURIComponent(text);
+                break;
+            case "skincarisma":
+                link.href = "https://www.skincarisma.com/search?utf8=%E2%9C%93&q=" + encodeURIComponent(text);
                 break;
             default:
                 return false;
