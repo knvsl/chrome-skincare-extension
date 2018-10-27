@@ -15,6 +15,7 @@ https://chrome.google.com/webstore/detail/beautyhelper/ffgflmclckheihbaejnnfodhj
 `img` Icon images
 
 `js`  
-`background.js` background script sets up context menus and fetches the data    
+
+`background.js` Background script sets up context menus and fetches the data    
 `dashboard.js` Setup event handlers for the dashboard links and activate them on enter  
 `ingredients.js` Parse ingredients text and search against the data  
