@@ -128,7 +128,7 @@ function setURLs (options, text) {
                 link.href = "https://www.sephora.com/search?keyword=" + encodeURIComponent(text);
                 break;
             case "mua":
-                link.href = "https://www.makeupalley.com/product/searching.asp?Brand=&BrandName=&CategoryID=0&title=" + encodeURIComponent(text);
+                link.href = "https://www.makeupalley.com/product/searching?Brand=0&BrandName=&q=" + encodeURIComponent(text);
                 break;
             case "cosdna":
                 link.href = "http://www.cosdna.com/eng/product.php?q=" + encodeURIComponent(text);

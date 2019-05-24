@@ -1,6 +1,6 @@
 {
     "name": "beautyHelper",
-    "version": "1.2.2",
+    "version": "1.2.4",
     "description": "For skincare + makeup enthusiasts! Analyze cosmetic ingredients and search products on your favourite beauty sites ❣️",
     "icons": {
         "16": "src/img/kiss16.png",
